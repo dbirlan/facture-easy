@@ -8,9 +8,12 @@ import {
   PDFViewer,
 } from '@react-pdf/renderer';
 
+import Header from './facture/Header';
+import Body from './facture/Body';
+
 const styles = StyleSheet.create({
   page: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     backgroundColor: '#E4E4E4',
   },
   section: {
@@ -18,22 +21,19 @@ const styles = StyleSheet.create({
     padding: 10,
     flexGrow: 1,
   },
+  title: {
+    margin: 10,
+    textAlign: 'center',
+  },
 });
 
 function MyDocument({ nom, prenom }) {
-  console.log({ nom, prenom });
   return (
     <PDFViewer width="50%" height="800px">
       <Document>
         <Page size="A4" style={styles.page}>
-          <View style={styles.section}>
-            <Text>Nom : {nom}</Text>
-            <Text>Nom : {nom}</Text>
-            <Text>Nom : {nom}</Text>
-          </View>
-          <View style={styles.section}>
-            <Text>Prénom : {prenom}</Text>
-          </View>
+          <Header />
+          <Body />
         </Page>
       </Document>
     </PDFViewer>
@@ -41,3 +41,15 @@ function MyDocument({ nom, prenom }) {
 }
 
 export default MyDocument;
+
+/* 
+<View style={styles.title}>
+            <Text>Facture n°{Math.floor(Math.random() * 1000000)}</Text>
+          </View>
+          <View style={styles.section}>
+            <Text>Nom : {nom}</Text>
+          </View>
+          <View style={styles.section}>
+            <Text>Prénom : {prenom}</Text>
+          </View>
+*/
