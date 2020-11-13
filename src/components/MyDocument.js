@@ -1,15 +1,9 @@
 import React from 'react';
-import {
-  Page,
-  Text,
-  View,
-  Document,
-  StyleSheet,
-  PDFViewer,
-} from '@react-pdf/renderer';
+import { Page, Document, StyleSheet, PDFViewer } from '@react-pdf/renderer';
 
 import Header from './facture/Header';
 import Body from './facture/Body';
+import Footer from './facture/Footer';
 
 const styles = StyleSheet.create({
   page: {
@@ -34,6 +28,7 @@ function MyDocument({ nom, prenom }) {
         <Page size="A4" style={styles.page}>
           <Header />
           <Body />
+          <Footer />
         </Page>
       </Document>
     </PDFViewer>
