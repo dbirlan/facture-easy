@@ -53,6 +53,13 @@ export default ({
   cpville1,
   telephone1,
   email1,
+  nom2,
+  prenom2,
+  societe2,
+  adresse2,
+  cpville2,
+  telephone2,
+  email2,
 }) => (
   <View>
     <View style={styles.container1}>
@@ -73,10 +80,14 @@ export default ({
       </View>
     </View>
     <View style={styles.container2}>
-      <Text style={styles.sender}>Nom</Text>
-      <Text style={styles.sender}>Nom de la société</Text>
-      <Text style={styles.sender}>Adresse postale</Text>
-      <Text style={styles.sender}>Téléphone, email</Text>
+      <Text style={styles.sender}>
+        {prenom2} {nom2}
+      </Text>
+      <Text style={styles.sender}>{societe2}</Text>
+      <Text style={styles.sender}>{adresse2}</Text>
+      <Text style={styles.sender}>{cpville2}</Text>
+      <Text style={styles.sender}>{telephone2}</Text>
+      <Text style={styles.sender}>{email2}</Text>
     </View>
     <Description />
   </View>

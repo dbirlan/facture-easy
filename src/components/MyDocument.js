@@ -29,6 +29,13 @@ function MyDocument({
   cpville1,
   telephone1,
   email1,
+  nom2,
+  prenom2,
+  societe2,
+  adresse2,
+  cpville2,
+  telephone2,
+  email2,
 }) {
   return (
     <PDFViewer width="50%" height="800px">
@@ -43,6 +50,13 @@ function MyDocument({
             cpville1={cpville1}
             telephone1={telephone1}
             email1={email1}
+            nom2={nom2}
+            prenom2={prenom2}
+            societe2={societe2}
+            adresse2={adresse2}
+            cpville2={cpville2}
+            telephone2={telephone2}
+            email2={email2}
           />
           <Footer />
         </Page>
