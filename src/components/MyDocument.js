@@ -21,13 +21,29 @@ const styles = StyleSheet.create({
   },
 });
 
-function MyDocument({ nom, prenom }) {
+function MyDocument({
+  nom1,
+  prenom1,
+  societe1,
+  adresse1,
+  cpville1,
+  telephone1,
+  email1,
+}) {
   return (
     <PDFViewer width="50%" height="800px">
       <Document>
         <Page size="A4" style={styles.page}>
           <Header />
-          <Body />
+          <Body
+            nom1={nom1}
+            prenom1={prenom1}
+            societe1={societe1}
+            adresse1={adresse1}
+            cpville1={cpville1}
+            telephone1={telephone1}
+            email1={email1}
+          />
           <Footer />
         </Page>
       </Document>

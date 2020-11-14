@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
   title: {
-    fontSize: 12,
+    fontSize: 14,
     justifySelf: 'flex-end',
     marginTop: 10,
     margin: 'auto',
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     padding: '5px',
   },
   subtitle: {
-    fontSize: 10,
+    fontSize: 12,
     justifySelf: 'flex-end',
     marginTop: 10,
     margin: 'auto',

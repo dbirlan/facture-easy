@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
   subtitle: {
-    fontSize: 10,
+    fontSize: 12,
     justifySelf: 'flex-end',
     marginTop: 10,
   },

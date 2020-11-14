@@ -34,25 +34,37 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 14,
-    marginTop: '10px',
+    marginTop: '30px',
   },
   sender: {
-    fontSize: 10,
+    fontSize: 12,
     justifySelf: 'flex-end',
   },
   detail: {
-    fontSize: 10,
+    fontSize: 12,
   },
 });
 
-export default () => (
+export default ({
+  nom1,
+  prenom1,
+  societe1,
+  adresse1,
+  cpville1,
+  telephone1,
+  email1,
+}) => (
   <View>
     <View style={styles.container1}>
       <View style={styles.detailColumn1}>
-        <Text style={styles.sender}>Nom</Text>
-        <Text style={styles.sender}>Nom de la société</Text>
-        <Text style={styles.sender}>Adresse postale</Text>
-        <Text style={styles.sender}>Téléphone, email</Text>
+        <Text style={styles.sender}>
+          {prenom1} {nom1}
+        </Text>
+        <Text style={styles.sender}>{societe1}</Text>
+        <Text style={styles.sender}>{adresse1}</Text>
+        <Text style={styles.sender}>{cpville1}</Text>
+        <Text style={styles.sender}>{telephone1}</Text>
+        <Text style={styles.sender}>{email1}</Text>
         <Text style={styles.title}>Destinataire</Text>
       </View>
       <View style={styles.detailColumn2}>
