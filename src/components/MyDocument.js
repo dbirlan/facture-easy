@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
 });
 
 function MyDocument({
+  date,
   nom1,
   prenom1,
   societe1,
@@ -41,7 +42,7 @@ function MyDocument({
     <PDFViewer width="50%" height="800px">
       <Document>
         <Page size="A4" style={styles.page}>
-          <Header />
+          <Header date={date} />
           <Body
             nom1={nom1}
             prenom1={prenom1}

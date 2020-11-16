@@ -27,13 +27,13 @@ const styles = StyleSheet.create({
   },
 });
 
-export default () => (
+export default (date) => (
   <View style={styles.container}>
     <View style={styles.detailColumn}>
       <Text style={styles.name}>
         Facture #{Math.floor(Math.random() * 1000000)}
       </Text>
-      <Text style={styles.subtitle}>Date de facturation</Text>
+      <Text style={styles.subtitle}>Date de facturation : {date.date}</Text>
     </View>
   </View>
 );

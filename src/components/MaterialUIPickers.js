@@ -20,7 +20,7 @@ export default function MaterialUIPickers() {
         <KeyboardDatePicker
           disableToolbar
           variant="inline"
-          format="dd/MM/yyyy"
+          format="MM/dd/yyyy"
           margin="normal"
           id="date-picker-inline"
           label="Date picker inline"

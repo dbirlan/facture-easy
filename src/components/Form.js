@@ -2,13 +2,20 @@ import React, { Component } from 'react';
 import { TextField } from '@material-ui/core';
 
 import MyDocument from './MyDocument';
-import MaterialUIPickers from './MaterialUIPickers';
+
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
+
+today = dd + '/' + mm + '/' + yyyy;
 
 class Form extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      date: today,
       nom1: 'Musk',
       prenom1: 'Elon',
       societe1: 'The Boring Company',
@@ -35,9 +42,14 @@ class Form extends Component {
     console.log(this.state);
   };
 
-  handleButtonClicked() {
-    console.log(this.state);
-  }
+  handleDateChange = (event) => {
+    const { name, value } = event.target;
+    var datePart = value.match(/\d+/g);
+
+    this.setState({
+      [name]: datePart[2] + '/' + datePart[1] + '/' + datePart[0],
+    });
+  };
 
   render() {
     const divStyle = {
@@ -65,13 +77,17 @@ class Form extends Component {
             }}
           >
             <h2>Date et description</h2>
-            <MaterialUIPickers />
             <div style={textDivStyle}>
               <TextField
-                id="standard-multiline-flexible"
-                label="Multiline"
-                multiline
-                rowsMax={4}
+                id="date"
+                label="Date"
+                type="date"
+                name="date"
+                defaultValue={today}
+                onChange={this.handleDateChange}
+                InputLabelProps={{
+                  shrink: true,
+                }}
               />
             </div>
             <div style={textDivStyle}>
@@ -80,6 +96,16 @@ class Form extends Component {
                 label="Multiline"
                 multiline
                 rowsMax={4}
+                style={{ width: '100%' }}
+              />
+            </div>
+            <div style={textDivStyle}>
+              <TextField
+                id="standard-multiline-flexible"
+                label="Multiline"
+                multiline
+                rowsMax={4}
+                style={{ width: '100%' }}
               />
             </div>
           </form>
@@ -134,7 +160,7 @@ class Form extends Component {
                 <TextField
                   name="cpville1"
                   id="standard-basic"
-                  label="Code Postal et Ville"
+                  label="CP Ville"
                   type="text"
                   placeholder={this.state.cpville1}
                   onChange={this.handleChange}
@@ -212,7 +238,7 @@ class Form extends Component {
                 <TextField
                   name="cpville2"
                   id="standard-basic"
-                  label="Code Postal et Ville"
+                  label="CP Ville"
                   type="text"
                   placeholder={this.state.cpville2}
                   onChange={this.handleChange}
@@ -242,6 +268,7 @@ class Form extends Component {
           </div>
         </div>
         <MyDocument
+          date={this.state.date}
           nom1={this.state.nom1}
           prenom1={this.state.prenom1}
           societe1={this.state.societe1}
@@ -263,3 +290,16 @@ class Form extends Component {
 }
 
 export default Form;
+
+/*<TextField
+                id="date"
+                label="Date"
+                type="date"
+                format="dd/MM/yyyy"
+                defaultValue={new Date()}
+                name="date"
+                onChange={this.handleChange}
+                InputLabelProps={{
+                  shrink: true,
+                }}
+              /> */
