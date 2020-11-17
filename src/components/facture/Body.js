@@ -60,6 +60,9 @@ export default ({
   cpville2,
   telephone2,
   email2,
+  description,
+  quantity,
+  price,
 }) => (
   <View>
     <View style={styles.container1}>
@@ -89,6 +92,6 @@ export default ({
       <Text style={styles.sender}>{telephone2}</Text>
       <Text style={styles.sender}>{email2}</Text>
     </View>
-    <Description />
+    <Description description={description} quantity={quantity} price={price} />
   </View>
 );

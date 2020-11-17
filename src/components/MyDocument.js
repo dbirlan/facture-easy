@@ -37,6 +37,9 @@ function MyDocument({
   cpville2,
   telephone2,
   email2,
+  description,
+  quantity,
+  price,
 }) {
   return (
     <PDFViewer width="50%" height="800px">
@@ -58,6 +61,9 @@ function MyDocument({
             cpville2={cpville2}
             telephone2={telephone2}
             email2={email2}
+            description={description}
+            quantity={quantity}
+            price={price}
           />
           <Footer />
         </Page>
