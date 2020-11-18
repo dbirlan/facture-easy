@@ -42,7 +42,7 @@ function MyDocument({
   price,
 }) {
   return (
-    <PDFViewer width="50%" height="800px">
+    <PDFViewer width="50%" height="1200px">
       <Document>
         <Page size="A4" style={styles.page}>
           <Header date={date} />

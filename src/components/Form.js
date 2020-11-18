@@ -102,7 +102,6 @@ class Form extends Component {
       <div style={divStyle}>
         <div style={verticalDivStyle}>
           <InputForm onInputChange={this.handleInputChange} />
-
           <AddElements addElements={this.addElements} />
         </div>
         <MyDocument
