@@ -45,36 +45,18 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ({
-  nom1,
-  prenom1,
-  societe1,
-  adresse1,
-  cpville1,
-  telephone1,
-  email1,
-  nom2,
-  prenom2,
-  societe2,
-  adresse2,
-  cpville2,
-  telephone2,
-  email2,
-  description,
-  quantity,
-  price,
-}) => (
+export default (props) => (
   <View>
     <View style={styles.container1}>
       <View style={styles.detailColumn1}>
         <Text style={styles.sender}>
-          {prenom1} {nom1}
+          {props.prenom1} {props.nom1} {console.log(props)}
         </Text>
-        <Text style={styles.sender}>{societe1}</Text>
-        <Text style={styles.sender}>{adresse1}</Text>
-        <Text style={styles.sender}>{cpville1}</Text>
-        <Text style={styles.sender}>{telephone1}</Text>
-        <Text style={styles.sender}>{email1}</Text>
+        <Text style={styles.sender}>{props.societe1}</Text>
+        <Text style={styles.sender}>{props.adresse1}</Text>
+        <Text style={styles.sender}>{props.cpville1}</Text>
+        <Text style={styles.sender}>{props.telephone1}</Text>
+        <Text style={styles.sender}>{props.email1}</Text>
         <Text style={styles.title}>Destinataire</Text>
       </View>
       <View style={styles.detailColumn2}>
@@ -84,14 +66,18 @@ export default ({
     </View>
     <View style={styles.container2}>
       <Text style={styles.sender}>
-        {prenom2} {nom2}
+        {props.prenom2} {props.nom2}
       </Text>
-      <Text style={styles.sender}>{societe2}</Text>
-      <Text style={styles.sender}>{adresse2}</Text>
-      <Text style={styles.sender}>{cpville2}</Text>
-      <Text style={styles.sender}>{telephone2}</Text>
-      <Text style={styles.sender}>{email2}</Text>
+      <Text style={styles.sender}>{props.societe2}</Text>
+      <Text style={styles.sender}>{props.adresse2}</Text>
+      <Text style={styles.sender}>{props.cpville2}</Text>
+      <Text style={styles.sender}>{props.telephone2}</Text>
+      <Text style={styles.sender}>{props.email2}</Text>
     </View>
-    <Description description={description} quantity={quantity} price={price} />
+    <Description
+      description={props.description}
+      quantity={props.quantity}
+      price={props.price}
+    />
   </View>
 );

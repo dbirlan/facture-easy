@@ -42,25 +42,23 @@ const styles = StyleSheet.create({
   },
 });
 
-export default (description) => (
+export default (props) => (
   <View style={styles.container}>
     <View style={styles.detailColumn}>
       <Text style={styles.title}>Description</Text>
-      <Text style={styles.subtitle}>{description.description}</Text>
+      <Text style={styles.subtitle}>{props.description}</Text>
     </View>
     <View style={styles.detailColumn}>
       <Text style={styles.title}>Quantité</Text>
-      <Text style={styles.subtitle}>{description.price}</Text>
+      <Text style={styles.subtitle}>{props.quantity}</Text>
     </View>
     <View style={styles.detailColumn}>
       <Text style={styles.title}>Prix Unitaire</Text>
-      <Text style={styles.subtitle}>{description.quantity}</Text>
+      <Text style={styles.subtitle}>{props.price}</Text>
     </View>
     <View style={styles.detailColumn}>
       <Text style={styles.title}>Total</Text>
-      <Text style={styles.subtitle}>
-        {description.quantity * description.price}
-      </Text>
+      <Text style={styles.subtitle}>{props.quantity * props.price}</Text>
     </View>
   </View>
 );

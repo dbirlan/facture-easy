@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Fab from '@material-ui/core/Fab';
 import Icon from '@material-ui/core/Icon';
-import PropTypes from 'prop-types';
 
 export class Element extends Component {
   getStyle = () => {
@@ -21,7 +20,11 @@ export class Element extends Component {
           <b style={bStyle}>Description</b>
           <b style={bStyle}>Quantité</b>
           <b style={bStyle}>Prix</b>
-          <Fab color="secondary" aria-label="Add">
+          <Fab
+            color="secondary"
+            aria-label="Add"
+            onClick={console.log(this.props)}
+          >
             <Icon>delete</Icon>
           </Fab>
         </p>

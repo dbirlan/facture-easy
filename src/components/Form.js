@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import faker from 'faker';
 
 import MyDocument from './MyDocument';
 import AddElements from './AddElements';
@@ -12,23 +13,23 @@ class Form extends Component {
 
     this.state = {
       date: formatDate(new Date()),
-      nom1: 'Musk',
-      prenom1: 'Elon',
-      societe1: 'The Boring Company',
-      adresse1: '1419 Westwood Boulevard',
-      cpville1: '90250 Los Angeles',
-      telephone1: '+1 310-553-5767',
-      email1: 'elon.musk@tbc.com',
-      nom2: 'Musk',
-      prenom2: 'Elon',
-      societe2: 'The Boring Company',
-      adresse2: '1419 Westwood Boulevard',
-      cpville2: '90250 Los Angeles',
-      telephone2: '+1 310-553-5767',
-      email2: 'elon.musk@tbc.com',
-      description: 'Flamethrowers',
-      quantity: '3',
-      price: '500',
+      nom1: faker.name.lastName(),
+      prenom1: faker.name.firstName(),
+      societe1: faker.company.companyName(),
+      adresse1: faker.address.streetAddress(),
+      cpville1: faker.address.zipCode() + ' ' + faker.address.city(),
+      telephone1: faker.phone.phoneNumber(),
+      email1: faker.internet.email(),
+      nom2: faker.name.lastName(),
+      prenom2: faker.name.firstName(),
+      societe2: faker.company.companyName(),
+      adresse2: faker.address.streetAddress(),
+      cpville2: faker.address.zipCode() + ' ' + faker.address.city(),
+      telephone2: faker.phone.phoneNumber(),
+      email2: faker.internet.email(),
+      description: faker.commerce.product(),
+      quantity: faker.random.number(),
+      price: faker.commerce.price(),
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -67,6 +68,7 @@ class Form extends Component {
       telephone2,
       email2,
     } = input;
+
     this.setState({
       date: date,
       nom1: nom1,
