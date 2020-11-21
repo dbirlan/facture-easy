@@ -4,49 +4,89 @@ import faker from 'faker';
 import MyDocument from './MyDocument';
 import AddElements from './AddElements';
 import InputForm from './InputForm';
+import Elements from './Elements';
+import { v4 as uuidv4 } from 'uuid';
 
 import { formatDate } from '../utils';
 
 class Form extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      date: formatDate(new Date()),
-      nom1: faker.name.lastName(),
-      prenom1: faker.name.firstName(),
-      societe1: faker.company.companyName(),
-      adresse1: faker.address.streetAddress(),
-      cpville1: faker.address.zipCode() + ' ' + faker.address.city(),
-      telephone1: faker.phone.phoneNumber(),
-      email1: faker.internet.email(),
-      nom2: faker.name.lastName(),
-      prenom2: faker.name.firstName(),
-      societe2: faker.company.companyName(),
-      adresse2: faker.address.streetAddress(),
-      cpville2: faker.address.zipCode() + ' ' + faker.address.city(),
-      telephone2: faker.phone.phoneNumber(),
-      email2: faker.internet.email(),
-      description: faker.commerce.product(),
-      quantity: faker.random.number(),
-      price: faker.commerce.price(),
-    };
-    this.handleChange = this.handleChange.bind(this);
-  }
+  state = {
+    date: formatDate(new Date()),
+    nom1: faker.name.lastName(),
+    prenom1: faker.name.firstName(),
+    societe1: faker.company.companyName(),
+    adresse1: faker.address.streetAddress(),
+    cpville1: faker.address.zipCode() + ' ' + faker.address.city(),
+    telephone1: faker.phone.phoneNumber(),
+    email1: faker.internet.email(),
+    nom2: faker.name.lastName(),
+    prenom2: faker.name.firstName(),
+    societe2: faker.company.companyName(),
+    adresse2: faker.address.streetAddress(),
+    cpville2: faker.address.zipCode() + ' ' + faker.address.city(),
+    telephone2: faker.phone.phoneNumber(),
+    email2: faker.internet.email(),
+    description: faker.commerce.product(),
+    quantity: faker.random.number(),
+    serviceDescription: faker.commerce.productDescription(),
+    conditions: 'Par chèque dans les 15 prochains jours',
+    total: 0,
+    elements: [
+      {
+        id: 1,
+        description: faker.commerce.product(),
+        quantity: faker.random.number(),
+        price: faker.commerce.price(),
+      },
+      {
+        id: 2,
+        description: faker.commerce.product(),
+        quantity: faker.random.number(),
+        price: faker.commerce.price(),
+      },
+      {
+        id: 3,
+        description: faker.commerce.product(),
+        quantity: faker.random.number(),
+        price: faker.commerce.price(),
+      },
+      {
+        id: 4,
+        description: faker.commerce.product(),
+        quantity: faker.random.number(),
+        price: faker.commerce.price(),
+      },
+      {
+        id: 5,
+        description: faker.commerce.product(),
+        quantity: faker.random.number(),
+        price: faker.commerce.price(),
+      },
+      {
+        id: 6,
+        description: faker.commerce.product(),
+        quantity: faker.random.number(),
+        price: faker.commerce.price(),
+      },
+    ],
+  };
 
   handleChange = (event) => {
     const { name, value } = event.target;
     this.setState({
       [name]: value,
     });
-    console.log(this.state);
   };
 
-  addElements = (element) => {
+  addElements = (elementState) => {
+    const newElement = {
+      id: uuidv4(),
+      description: elementState.description,
+      quantity: elementState.quantity,
+      price: elementState.price,
+    };
     this.setState({
-      description: element.description,
-      quantity: element.quantity,
-      price: element.price,
+      elements: [...this.state.elements, newElement],
     });
   };
 
@@ -67,6 +107,8 @@ class Form extends Component {
       cpville2,
       telephone2,
       email2,
+      serviceDescription,
+      conditions,
     } = input;
 
     this.setState({
@@ -85,6 +127,16 @@ class Form extends Component {
       cpville2: cpville2,
       telephone2: telephone2,
       email2: email2,
+      serviceDescription: serviceDescription,
+      conditions: conditions,
+    });
+  };
+
+  delElement = (id) => {
+    this.setState({
+      elements: [
+        ...this.state.elements.filter((elements) => elements.id !== id),
+      ],
     });
   };
 
@@ -99,12 +151,17 @@ class Form extends Component {
     };
     const verticalDivStyle = {
       flexDirection: 'row',
+      marginRight: 20,
     };
     return (
       <div style={divStyle}>
         <div style={verticalDivStyle}>
           <InputForm onInputChange={this.handleInputChange} />
           <AddElements addElements={this.addElements} />
+          <Elements
+            elements={this.state.elements}
+            delElement={this.delElement}
+          />
         </div>
         <MyDocument
           date={this.state.date}
@@ -122,9 +179,9 @@ class Form extends Component {
           cpville2={this.state.cpville2}
           telephone2={this.state.telephone2}
           email2={this.state.email2}
-          description={this.state.description}
-          quantity={this.state.quantity}
-          price={this.state.price}
+          serviceDescription={this.state.serviceDescription}
+          conditions={this.state.conditions}
+          elements={this.state.elements}
         />
       </div>
     );

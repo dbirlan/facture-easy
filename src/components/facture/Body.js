@@ -27,10 +27,10 @@ const styles = StyleSheet.create({
   },
   detailColumn1: {
     flexDirection: 'column',
-    flexGrow: 9,
   },
   detailColumn2: {
-    flexGrow: 1,
+    marginLeft: '40px',
+    width: '340px',
   },
   title: {
     fontSize: 14,
@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
   },
   detail: {
     fontSize: 12,
+    marginBottom: '5px',
   },
 });
 
@@ -60,8 +61,8 @@ export default (props) => (
         <Text style={styles.title}>Destinataire</Text>
       </View>
       <View style={styles.detailColumn2}>
-        <Text style={styles.detail}>Description du service</Text>
-        <Text style={styles.detail}>Conditions de payement</Text>
+        <Text style={styles.detail}>{props.serviceDescription}</Text>
+        <Text style={styles.detail}>{props.conditions}</Text>
       </View>
     </View>
     <View style={styles.container2}>
@@ -74,10 +75,6 @@ export default (props) => (
       <Text style={styles.sender}>{props.telephone2}</Text>
       <Text style={styles.sender}>{props.email2}</Text>
     </View>
-    <Description
-      description={props.description}
-      quantity={props.quantity}
-      price={props.price}
-    />
+    <Description elements={props.elements} />
   </View>
 );

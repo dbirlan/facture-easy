@@ -3,7 +3,6 @@ import { Page, Document, StyleSheet, PDFViewer } from '@react-pdf/renderer';
 
 import Header from './facture/Header';
 import Body from './facture/Body';
-import Footer from './facture/Footer';
 
 const styles = StyleSheet.create({
   page: {
@@ -45,8 +44,10 @@ function MyDocument(props) {
             description={props.description}
             quantity={props.quantity}
             price={props.price}
+            serviceDescription={props.serviceDescription}
+            conditions={props.conditions}
+            elements={props.elements}
           />
-          <Footer />
         </Page>
       </Document>
     </PDFViewer>
@@ -54,15 +55,3 @@ function MyDocument(props) {
 }
 
 export default MyDocument;
-
-/* 
-<View style={styles.title}>
-            <Text>Facture n°{Math.floor(Math.random() * 1000000)}</Text>
-          </View>
-          <View style={styles.section}>
-            <Text>Nom : {nom}</Text>
-          </View>
-          <View style={styles.section}>
-            <Text>Prénom : {prenom}</Text>
-          </View>
-*/

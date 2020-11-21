@@ -2,28 +2,31 @@ import React, { Component } from 'react';
 import { TextField } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
+import faker from 'faker';
 
 import MaterialUIPickers from './MaterialUIPickers';
 
 import { formatDate } from '../utils';
 
-export default class addElements extends Component {
+export default class InputForm extends Component {
   state = {
     date: formatDate(new Date()),
-    nom1: 'Musk',
-    prenom1: 'Elon',
-    societe1: 'The Boring Company',
-    adresse1: '1419 Westwood Boulevard',
-    cpville1: '90250 Los Angeles',
-    telephone1: '+1 310-553-5767',
-    email1: 'elon.musk@tbc.com',
-    nom2: 'Musk',
-    prenom2: 'Elon',
-    societe2: 'The Boring Company',
-    adresse2: '1419 Westwood Boulevard',
-    cpville2: '90250 Los Angeles',
-    telephone2: '+1 310-553-5767',
-    email2: 'elon.musk@tbc.com',
+    nom1: faker.name.lastName(),
+    prenom1: faker.name.firstName(),
+    societe1: faker.company.companyName(),
+    adresse1: faker.address.streetAddress(),
+    cpville1: faker.address.zipCode() + ' ' + faker.address.city(),
+    telephone1: faker.phone.phoneNumber(),
+    email1: faker.internet.email(),
+    nom2: faker.name.lastName(),
+    prenom2: faker.name.firstName(),
+    societe2: faker.company.companyName(),
+    adresse2: faker.address.streetAddress(),
+    cpville2: faker.address.zipCode() + ' ' + faker.address.city(),
+    telephone2: faker.phone.phoneNumber(),
+    email2: faker.internet.email(),
+    serviceDescription: faker.commerce.productDescription(),
+    conditions: 'Par chèque dans les 15 prochains jours',
   };
 
   handleDateChange = (date) => {
@@ -40,6 +43,7 @@ export default class addElements extends Component {
     e.preventDefault();
     this.props.onInputChange(this.state);
   };
+
   render() {
     const divStyle = {
       margin: 'auto',
@@ -66,20 +70,26 @@ export default class addElements extends Component {
         </div>
         <div style={textDivStyle}>
           <TextField
+            name="serviceDescription"
             id="standard-multiline-flexible"
             label="Description du service"
             multiline
             rowsMax={4}
             style={{ width: '100%' }}
+            placeholder={this.state.serviceDescription}
+            onChange={this.handleChange}
           />
         </div>
         <div style={textDivStyle}>
           <TextField
+            name="conditions"
             id="standard-multiline-flexible"
             label="Conditions de payement"
             multiline
             rowsMax={4}
             style={{ width: '100%' }}
+            placeholder={this.state.conditions}
+            onChange={this.handleChange}
           />
         </div>
         <div style={divStyle}>
@@ -253,7 +263,7 @@ export default class addElements extends Component {
             justifyContent: 'center',
           }}
         >
-          Save
+          SAVE
         </Button>
       </form>
     );

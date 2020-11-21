@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: '#112131',
     borderStyle: 'solid',
+    marginTop: 50,
   },
   detailColumn: {
     flexDirection: 'column',
@@ -42,23 +43,75 @@ const styles = StyleSheet.create({
   },
 });
 
-export default (props) => (
-  <View style={styles.container}>
-    <View style={styles.detailColumn}>
-      <Text style={styles.title}>Description</Text>
-      <Text style={styles.subtitle}>{props.description}</Text>
-    </View>
-    <View style={styles.detailColumn}>
-      <Text style={styles.title}>Quantité</Text>
-      <Text style={styles.subtitle}>{props.quantity}</Text>
-    </View>
-    <View style={styles.detailColumn}>
-      <Text style={styles.title}>Prix Unitaire</Text>
-      <Text style={styles.subtitle}>{props.price}</Text>
-    </View>
-    <View style={styles.detailColumn}>
-      <Text style={styles.title}>Total</Text>
-      <Text style={styles.subtitle}>{props.quantity * props.price}</Text>
-    </View>
-  </View>
-);
+class Description extends React.Component {
+  state = {
+    total: 0,
+  };
+
+  componentDidMount() {
+    let somme = 0;
+    this.props.elements.map(
+      (element) => (somme += element.price * element.quantity)
+    );
+
+    this.setState({ total: somme });
+    // this.setState({
+    //   total:
+    //     parseFloat(this.state.total) +
+    //     parseFloat(element.price) * parseFloat(element.quantity),
+    // })
+  }
+
+  onTotalChange = () => {
+    let somme = 0;
+    this.props.elements.map(
+      (element) => (somme += element.price * element.quantity)
+    );
+    this.setState({ total: somme });
+    return this.state.total;
+  };
+
+  render() {
+    return (
+      <View>
+        <View style={styles.container}>
+          <View style={styles.detailColumn}>
+            <Text style={styles.title}>Description</Text>
+            {this.props.elements.map((element) => (
+              <Text key={element.id} style={styles.subtitle}>
+                {element.description}
+              </Text>
+            ))}
+          </View>
+          <View style={styles.detailColumn}>
+            <Text style={styles.title}>Quantité</Text>
+            {this.props.elements.map((element) => (
+              <Text key={element.id} style={styles.subtitle}>
+                {element.quantity}
+              </Text>
+            ))}
+          </View>
+          <View style={styles.detailColumn}>
+            <Text style={styles.title}>Prix Unitaire</Text>
+            {this.props.elements.map((element) => (
+              <Text key={element.id} style={styles.subtitle}>
+                {element.price}
+              </Text>
+            ))}
+          </View>
+          <View style={styles.detailColumn}>
+            <Text style={styles.title}>Total</Text>
+            {this.props.elements.map((element) => (
+              <Text key={element.id} style={styles.subtitle}>
+                {element.price * element.quantity}
+              </Text>
+            ))}
+          </View>
+        </View>
+        <Text style={styles.title}> Solde du : {this.state.total} €</Text>
+      </View>
+    );
+  }
+}
+
+export default Description;

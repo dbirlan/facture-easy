@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import Fab from '@material-ui/core/Fab';
 import Icon from '@material-ui/core/Icon';
 
-export class Element extends Component {
+export class ElementItem extends Component {
   getStyle = () => {
     return {
       background: '#f4f4f4',
@@ -13,17 +15,17 @@ export class Element extends Component {
   };
 
   render() {
-    // const { id, title } = this.props.todo;
+    const { id, description, quantity, price } = this.props.elements;
     return (
       <div style={this.getStyle()}>
         <p style={{ display: 'flex' }}>
-          <b style={bStyle}>Description</b>
-          <b style={bStyle}>Quantité</b>
-          <b style={bStyle}>Prix</b>
+          <b style={bStyle}>{description}</b>
+          <b style={bStyle}>{quantity}</b>
+          <b style={bStyle}>{price}</b>
           <Fab
             color="secondary"
             aria-label="Add"
-            onClick={console.log(this.props)}
+            onClick={() => this.props.delElement(id)}
           >
             <Icon>delete</Icon>
           </Fab>
@@ -34,15 +36,10 @@ export class Element extends Component {
 }
 
 // PropTypes
-Element.propTypes = {};
-const bStyle = { margin: 'auto' };
-const btnStyle = {
-  background: '#ff0000',
-  color: '#fff',
-  border: 'none',
-  padding: '5px 9px',
-  borderRadius: '50%',
-  cursor: 'pointer',
-  float: 'right',
+ElementItem.propTypes = {
+  elements: PropTypes.object.isRequired,
+  delElement: PropTypes.func.isRequired,
 };
-export default Element;
+
+const bStyle = { margin: 'auto' };
+export default ElementItem;
