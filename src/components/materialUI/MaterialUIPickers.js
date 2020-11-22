@@ -24,12 +24,13 @@ export default function MaterialUIPickers(props) {
           format="dd/MM/yyyy"
           margin="normal"
           id="date-picker-inline"
-          label="Date picker inline"
+          label="Date de facturation"
           value={selectedDate}
           onChange={handleDateChange}
           KeyboardButtonProps={{
             'aria-label': 'change date',
           }}
+          style={{ width: '100%' }}
         />
       </MuiPickersUtilsProvider>
     </div>

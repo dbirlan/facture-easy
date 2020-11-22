@@ -44,33 +44,6 @@ const styles = StyleSheet.create({
 });
 
 class Description extends React.Component {
-  state = {
-    total: 0,
-  };
-
-  componentDidMount() {
-    let somme = 0;
-    this.props.elements.map(
-      (element) => (somme += element.price * element.quantity)
-    );
-
-    this.setState({ total: somme });
-    // this.setState({
-    //   total:
-    //     parseFloat(this.state.total) +
-    //     parseFloat(element.price) * parseFloat(element.quantity),
-    // })
-  }
-
-  onTotalChange = () => {
-    let somme = 0;
-    this.props.elements.map(
-      (element) => (somme += element.price * element.quantity)
-    );
-    this.setState({ total: somme });
-    return this.state.total;
-  };
-
   render() {
     return (
       <View>
@@ -108,7 +81,7 @@ class Description extends React.Component {
             ))}
           </View>
         </View>
-        <Text style={styles.title}> Solde du : {this.state.total} €</Text>
+        <Text style={styles.title}> Solde du : {this.props.total} €</Text>
       </View>
     );
   }

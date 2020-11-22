@@ -3,8 +3,11 @@ import { TextField } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
+import Fab from '@material-ui/core/Fab';
 
-export class addElements extends Component {
+import Responsiveh4 from '../materialUI/Responsiveh4';
+
+export class AddElements extends Component {
   state = {
     description: 'Flamethrowers',
     quantity: '3',
@@ -20,9 +23,12 @@ export class addElements extends Component {
 
   render() {
     return (
-      <div>
-        <h2>Ajouter des éléments</h2>
-        <form onSubmit={this.onSubmit} style={{ display: 'flex' }}>
+      <div style={{ marginTop: '20px' }}>
+        <Responsiveh4 text="Ajouter des éléments"></Responsiveh4>
+        <form
+          onSubmit={this.onSubmit}
+          style={{ display: 'flex', marginTop: '10px' }}
+        >
           <TextField
             name="description"
             id="standard-basic"
@@ -51,14 +57,14 @@ export class addElements extends Component {
             type="submit"
             variant="contained"
             color="primary"
-            size="large"
+            size="small"
             className="btn"
             startIcon={<Icon>add</Icon>}
             style={{
               flex: '1',
             }}
           >
-            Ajouter
+            A
           </Button>
         </form>
       </div>
@@ -67,8 +73,8 @@ export class addElements extends Component {
 }
 
 //PropTypes
-addElements.propTypes = {
-  addElements: PropTypes.func.isRequired,
+AddElements.propTypes = {
+  AddElements: PropTypes.func.isRequired,
 };
 
-export default addElements;
+export default AddElements;

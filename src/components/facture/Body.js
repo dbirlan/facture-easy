@@ -75,6 +75,6 @@ export default (props) => (
       <Text style={styles.sender}>{props.telephone2}</Text>
       <Text style={styles.sender}>{props.email2}</Text>
     </View>
-    <Description elements={props.elements} />
+    <Description elements={props.elements} total={props.total} />
   </View>
 );

@@ -41,5 +41,6 @@ ElementItem.propTypes = {
   delElement: PropTypes.func.isRequired,
 };
 
-const bStyle = { margin: 'auto' };
+const bStyle = { marginRight: 'auto' };
+
 export default ElementItem;

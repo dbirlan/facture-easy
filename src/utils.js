@@ -6,3 +6,7 @@ export const formatDate = (date) => {
 
   return day + '/' + month + '/' + year;
 };
+
+export const roundPrice = (price) => {
+  return Math.round((price + Number.EPSILON) * 100) / 100;
+};

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Page, Document, StyleSheet, PDFViewer } from '@react-pdf/renderer';
 
-import Header from './facture/Header';
-import Body from './facture/Body';
+import Header from './Header';
+import Body from './Body';
 
 const styles = StyleSheet.create({
   page: {
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
 
 function MyDocument(props) {
   return (
-    <PDFViewer width="50%" height="1200px">
+    <PDFViewer width="100%" height="800px">
       <Document>
         <Page size="A4" style={styles.page}>
           <Header date={props.date} />
@@ -47,6 +47,7 @@ function MyDocument(props) {
             serviceDescription={props.serviceDescription}
             conditions={props.conditions}
             elements={props.elements}
+            total={props.total}
           />
         </Page>
       </Document>
